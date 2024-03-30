@@ -1,29 +1,41 @@
-“<!DOCTYPE HTML>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coming Soon</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: 'Courier New', Courier, monospace;
+    color: #fff;
+  }
 
-<html lang=”en”>
+  .vhs-text {
+    font-size: 3rem;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    animation: flicker 1s infinite alternate;
+  }
 
-  <head>
-
-    <meta charset=”UTF-8″>
-
-    <meta name=”viewport” content=”width=device-width, initial-scale=1.0″>
-
-    <meta http-equiv=”X-UA-Compatible” content=”ie=edge”>
-
-    <title>My Website [Name of the website]</title>
-
-  </head>
-
-  <body>
-
-    <main>
-
-        <h1>Welcome to My Website [Name of the website]</h1>  
-
-        <p>This is my new website hosted on GitHub Pages!</p>
-
-    </main>
-
-  </body>
-
-</html>”
+  @keyframes flicker {
+    0% {
+      opacity: 0.8;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="vhs-text">Coming soon...</div>
+</body>
+</html>
