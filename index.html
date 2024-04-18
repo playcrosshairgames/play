@@ -1,49 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TRAPPER: REBORN</title> <!-- Changed the title here -->
-<style>
-  body {
-    margin: 0;
-    padding: 0;
-    background-color: black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    font-family: 'Courier New', Courier, monospace;
-    color: #fff;
-  }
-
-  .vhs-text {
-    font-size: 3rem;
-    text-align: center;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    animation: flicker 1s infinite alternate;
-  }
-  
-  .subtitle {
-    font-size: 1.5rem;
-    text-align: center;
-    margin-top: 10px; /* Adjust as needed */
-  }
-
-  @keyframes flicker {
-    0% {
-      opacity: 0.8;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coming Soon</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+      overflow: hidden;
+      background-color: #000;
+      color: #fff;
     }
-    100% {
-      opacity: 1;
+
+    #background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
     }
-  }
-</style>
+
+    #coming-soon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 2em;
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
-  <div class="vhs-text">Coming soon...</div>
-  <div class="subtitle">2024</div> <!-- Added the subtitle here -->
+  <canvas id="background"></canvas>
+  <div id="coming-soon">Coming Soon</div>
+
+  <script>
+    // Create the rain effect
+    let canvas = document.getElementById("background");
+    let ctx = canvas.getContext("2d");
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    let drops = [];
+
+    for (let i = 0; i < 500; i++) {
+      drops.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        speed: Math.random() * 5 + 2,
+        length: Math.random() * 20 + 10
+      });
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      ctx.fillStyle = "rgba(255, 255, 255, 0.1)";
+
+      for (let i = 0; i < drops.length; i++) {
+        let drop = drops[i];
+        ctx.fillRect(drop.x, drop.y, 2, drop.length);
+        drop.y += drop.speed;
+
+        if (drop.y > canvas.height) {
+          drop.y = -20;
+        }
+      }
+
+      requestAnimationFrame(draw);
+    }
+
+    draw();
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vhs/1.0.0/vhs.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap">
 </body>
 </html>
-
